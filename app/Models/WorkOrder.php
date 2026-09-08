@@ -13,8 +13,11 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 )]
 class WorkOrder extends Model
 {
-    protected $table = 'work_order';
-    protected $primaryKey = 'wo_number';
+    protected   $table = 'work_order';
+    protected   $primaryKey = 'wo_number';
+    protected   $keyType = 'string';
+    public      $incrementing = false;
+    public      $timestamps = false;
 
     public function product(): BelongsTo
     {

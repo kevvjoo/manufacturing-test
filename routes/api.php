@@ -7,3 +7,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('dashboard')->controller(DashboardController::class)->group(function() {
     Route::get('machine/{machineCode}', 'machinePerformance');
 });
+
+Route::controller(DashboardController::class)->group(function() {
+    Route::get('production-results', 'productionResults');
+});
