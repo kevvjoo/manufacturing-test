@@ -23,7 +23,7 @@ class WorkOrder extends Model
 
     public function machine(): BelongsTo
     {
-        return $this->belongsTo(Machine::class);
+        return $this->belongsTo(Machine::class, 'machine_code', 'machine_code');
     }
 
     public function employee(): BelongsTo
@@ -33,6 +33,6 @@ class WorkOrder extends Model
 
     public function productionResults(): HasOne
     {
-        return $this->hasOne(ProductionResult::class);
+        return $this->hasOne(ProductionResult::class, 'wo_number', 'wo_number');
     }
 }
