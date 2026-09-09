@@ -22,11 +22,4 @@ class ProductionResultResource extends JsonApiResource
         'good_qty',
         'reject_qty'
     ];
-
-    /**
-     * The resource's relationships.
-     */
-    public $relationships = [
-        // ...
-    ];
 }

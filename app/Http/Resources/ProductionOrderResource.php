@@ -24,11 +24,4 @@ class ProductionOrderResource extends JsonApiResource
         'shift',
         'status'
     ];
-
-    /**
-     * The resource's relationships.
-     */
-    public $relationships = [
-        // ...
-    ];
 }

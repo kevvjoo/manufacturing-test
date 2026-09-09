@@ -19,11 +19,4 @@ class MachineResource extends JsonApiResource
         'reject_qty',
         'achievement',
     ];
-
-    /**
-     * The resource's relationships.
-     */
-    public $relationships = [
-        // ...
-    ];
 }
