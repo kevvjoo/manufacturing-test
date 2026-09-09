@@ -9,5 +9,6 @@ Route::prefix('dashboard')->controller(DashboardController::class)->group(functi
 });
 
 Route::controller(DashboardController::class)->group(function() {
+    Route::get('production-orders', 'productionOrders');
     Route::get('production-results', 'productionResults');
 });
