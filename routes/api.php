@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('dashboard')->controller(DashboardController::class)->group(function() {
+    Route::get('', 'dashboard');
     Route::get('machine/{machineCode}', 'machinePerformance');
 });
 
