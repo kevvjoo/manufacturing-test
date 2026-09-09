@@ -15,9 +15,10 @@ class Machine extends Model
 {
     protected $table = 'machine';
     protected $primaryKey = 'machine_code';
+    protected $keyType = 'string';
 
     public function workOrders(): HasMany
     {
-        return $this->hasMany(WorkOrder::class);
+        return $this->hasMany(WorkOrder::class, 'machine_code', 'machine_code');
     }
 }
