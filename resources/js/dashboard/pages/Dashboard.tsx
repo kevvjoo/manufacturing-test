@@ -3,6 +3,7 @@ import { KpiGrid } from '../components/Kpi/KpiGrid'
 import { TopMachineTable } from '../components/Table/TopMachineTable'
 import { useDashboard } from '../hooks/useDashboard'
 import { StatusPie } from '../components/Charts/StatusPie'
+import { TopMachineBar } from '../components/Charts/TopMachineBar'
 
 export default function Dashboard() {
     const { data, isLoading, isError, error } = useDashboard()
@@ -36,6 +37,16 @@ export default function Dashboard() {
                 <CardContent>
                     <div className="h-64">
                         <StatusPie data={data.status_breakdown} />
+                    </div>
+                </CardContent>
+            </Card>
+            <Card>
+                <CardHeader>
+                    <CardTitle>Top 10 Machine — Good Qty</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <div className="h-72">
+                        <TopMachineBar machines={data.top_machines} />
                     </div>
                 </CardContent>
             </Card>
