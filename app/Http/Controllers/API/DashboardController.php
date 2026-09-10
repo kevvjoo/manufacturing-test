@@ -134,7 +134,7 @@ class DashboardController extends Controller
             )
             ->groupBy('machine.machine_code', 'machine.machine_name')
             ->orderByDesc('good_qty')
-            ->limit(5)
+            ->limit(10)
             ->get();
 
         return new DashboardResource([
