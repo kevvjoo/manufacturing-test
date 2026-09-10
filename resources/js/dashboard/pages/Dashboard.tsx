@@ -34,7 +34,9 @@ export default function Dashboard() {
                     <CardTitle>Status Breakdown</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <StatusPie data={data.status_breakdown} />
+                    <div className="h-64">
+                        <StatusPie data={data.status_breakdown} />
+                    </div>
                 </CardContent>
             </Card>
             <Card>
