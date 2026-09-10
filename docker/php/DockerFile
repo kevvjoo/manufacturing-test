@@ -1,4 +1,18 @@
-FROM php:8.3-fpm
+# ---- Stage 1: build frontend assets ----
+FROM node:20-alpine AS frontend
+
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+
+COPY resources/ resources/
+COPY vite.config.ts ./
+COPY tsconfig*.json ./
+COPY components.json ./
+RUN npm run build
+
+# ---- Stage 2: PHP application ----
+FROM php:8.4-fpm
 
 RUN apt-get update && apt-get install -y \
     git curl libpng-dev libonig-dev libxml2-dev libzip-dev zip unzip \
@@ -9,6 +23,14 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 
 COPY . .
+COPY --from=frontend /app/public/build public/build
+
+RUN cp .env.example .env
+
+RUN mkdir -p storage/framework/cache storage/framework/sessions storage/framework/views storage/logs bootstrap/cache \
+    && chown -R www-data:www-data storage bootstrap/cache
+
+RUN git config --global --add safe.directory /var/www/html
 
 RUN composer install --no-dev --optimize-autoloader \
     && chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache

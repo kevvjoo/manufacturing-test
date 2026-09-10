@@ -59,7 +59,7 @@ docker compose up -d --build
 
 Setelah container berjalan, aplikasi dapat diakses di:
 
-- **Dashboard (Web):** `http://localhost:8080/dashboard`
+- **Dashboard (Web):** `http://localhost:8080/`
 
 **Endpoint API:**
 
