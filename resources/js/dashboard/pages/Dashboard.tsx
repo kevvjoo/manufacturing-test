@@ -31,7 +31,6 @@ export default function Dashboard() {
 
             <KpiGrid summary={data.summary} />
 
-            {/* Pie + Bar shared row */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <Card>
                     <CardHeader>
@@ -56,7 +55,6 @@ export default function Dashboard() {
                 </Card>
             </div>
 
-            {/* Line chart full row */}
             <Card>
                 <CardHeader>
                     <CardTitle>7-Day Production Trend</CardTitle>
@@ -65,6 +63,15 @@ export default function Dashboard() {
                     <div className="h-72">
                         <TrendLine data={data.trend_7_days} />
                     </div>
+                </CardContent>
+            </Card>
+
+            <Card>
+                <CardHeader>
+                    <CardTitle>Top 10 Machines Performance</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <TopMachineTable machines={data.top_machines} />
                 </CardContent>
             </Card>
         </div>
